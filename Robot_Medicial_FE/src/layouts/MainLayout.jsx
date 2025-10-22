@@ -1,11 +1,16 @@
+import React from "react";
+import Header from "../components/Header";
 
-
-export default function MainLayout({ children }) {
+const MainLayout = ({ children }) => {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div>
+            <Header />
 
-            <main className="flex-grow">{children}</main>
-
+            <div className="container-fluid pt-5 mt-4">
+                {children}
+            </div>
         </div>
     );
-}
+};
+
+export default MainLayout;
