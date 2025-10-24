@@ -21,11 +21,16 @@ builder.Services.AddDbContext<RobotManagerContext>(options =>
 
 // Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRobotRepository, RobotRepository>();
 
 // Services
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRobotService, RobotService>();
 
 builder.Services.AddAutoMapper(typeof(UserProfile));
+builder.Services.AddAutoMapper(typeof(RobotProfile));
+
+// EmailSender
 
 var app = builder.Build();
 
