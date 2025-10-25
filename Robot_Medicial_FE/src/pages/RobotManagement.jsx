@@ -7,15 +7,7 @@ const robots = [
     { id: "RB-001", battery: 78, progress: 50, status: "Chờ bàn giao" },
     { id: "RB-002", battery: 55, progress: 99, status: "Chờ bàn giao" },
     { id: "RB-003", battery: 60, progress: 99, status: "Chờ bàn giao" },
-    { id: "RB-004", battery: 78, progress: 0, status: "Tại trạm" },
-    { id: "RB-005", battery: 68, progress: 50, status: "Chờ bàn giao" },
-    { id: "RB-006", battery: 95, progress: 0, status: "Ngoại tuyến" },
-    { id: "RB-007", battery: 100, progress: 0, status: "Đang sạc" },
-    { id: "RB-008", battery: 69, progress: 0, status: "Tại trạm" },
-    { id: "RB-009", battery: 67, progress: 0, status: "Sẵn sàng" },
-    { id: "RB-010", battery: 54, progress: 0, status: "Sẵn sàng" },
-    { id: "RB-011", battery: 68, progress: 0, status: "Sẵn sàng" },
-    { id: "RB-012", battery: 55, progress: 0, status: "Sẵn sàng" },
+    { id: "RB-004", battery: 78, progress: 0, status: "Tại trạm" }
 ];
 
 const getStatusBadge = (status) => {
@@ -34,7 +26,7 @@ export default function RobotManagement() {
     const navigate = useNavigate();
 
     const handleClick = (robotId) => {
-        navigate(`/robots/${robotId}`);
+        navigate(`/robot-tasks/${robotId}`);
     };
 
     return (
@@ -42,7 +34,7 @@ export default function RobotManagement() {
             <Container
                 fluid
                 style={{
-                    backgroundColor: "#e0f7fa",
+                    background: "linear-gradient(90deg, #8bf0e4ff 10%, #FFFFFF 100%)",
                     minHeight: "100vh",
                     padding: "30px",
                 }}

@@ -8,13 +8,16 @@ const Header = () => {
     const handleNavigate = (target) => {
         switch (target) {
             case "dashboard":
-                navigate("/home");
+                navigate("/dashboard");
                 break;
             case "team":
                 navigate("/team");
                 break;
+            case "doctor":
+                navigate("/doctor");
+                break;
             case "logout":
-                // ✅ Nếu có token auth thì xoá trước khi logout
+
                 localStorage.removeItem("token");
                 navigate("/");
                 break;
@@ -50,7 +53,13 @@ const Header = () => {
                     >
                         Quản Lý Đội Robot
                     </Button>
-
+                    <Button
+                        variant="outline-danger"
+                        className="me-2"
+                        onClick={() => handleNavigate("doctor")}
+                    >
+                        Quản Lý Bác Sĩ
+                    </Button>
                     <Button
                         variant="danger"
                         onClick={() => handleNavigate("logout")}

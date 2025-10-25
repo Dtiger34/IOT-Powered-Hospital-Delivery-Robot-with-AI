@@ -19,41 +19,43 @@ export default function Login() {
     };
 
     return (
-        <div className="login-container">
-            <form className="login-form" onSubmit={handleLogin}>
-                <h2>Đăng nhập hệ thống</h2>
+        <div className="login-page">
+            <div className="login-container">
+                <form className="login-form" onSubmit={handleLogin}>
+                    <h2>Đăng nhập hệ thống</h2>
 
-                <input
-                    type="text"
-                    placeholder="Tài khoản"
-                    value={user}
-                    onChange={(e) => setUser(e.target.value)}
-                />
-
-                <div className="password-wrapper">
                     <input
-                        type={showPass ? "text" : "password"}
-                        placeholder="Mật khẩu"
-                        value={pass}
-                        onChange={(e) => setPass(e.target.value)}
+                        type="text"
+                        placeholder="Tài khoản"
+                        value={user}
+                        onChange={(e) => setUser(e.target.value)}
                     />
-                    <span
-                        className="toggle-password"
-                        onClick={() => setShowPass(!showPass)}
+
+                    <div className="password-wrapper">
+                        <input
+                            type={showPass ? "text" : "password"}
+                            placeholder="Mật khẩu"
+                            value={pass}
+                            onChange={(e) => setPass(e.target.value)}
+                        />
+                        <span
+                            className="toggle-password"
+                            onClick={() => setShowPass(!showPass)}
+                        >
+                            {showPass ? "👁️" : "🙈"}
+                        </span>
+                    </div>
+
+                    <button type="submit">Đăng nhập</button>
+
+                    <p
+                        className="forgot-password"
+                        onClick={() => navigate("/")}
                     >
-                        {showPass ? "👁️" : "🙈"}
-                    </span>
-                </div>
-
-                <button type="submit">Đăng nhập</button>
-
-                <p
-                    className="forgot-password"
-                    onClick={() => navigate("/")}
-                >
-                    Quên mật khẩu?
-                </p>
-            </form>
+                        Quên mật khẩu?
+                    </p>
+                </form>
+            </div>
         </div>
     );
 }
