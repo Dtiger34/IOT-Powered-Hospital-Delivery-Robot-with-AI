@@ -1,0 +1,14 @@
+# Visual Studio cache
+.vs/
+bin/
+obj/
+*.user
+*.cache
+*.db
+*.v2
+*.vsidx
+
+# ROS
+Robot_Medicial_IOT/robot_ws/build/
+Robot_Medicial_IOT/robot_ws/install/
+Robot_Medicial_IOT/robot_ws/log/
