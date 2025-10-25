@@ -1,4 +1,5 @@
-﻿using API_Powered_Hospital_Delivery_Robot.Models.DTOs;
+﻿using API_Powered_Hospital_Delivery_Robot.Helpers;
+using API_Powered_Hospital_Delivery_Robot.Models.DTOs;
 using API_Powered_Hospital_Delivery_Robot.Models.Entities;
 using API_Powered_Hospital_Delivery_Robot.Repositories.IRepository;
 using API_Powered_Hospital_Delivery_Robot.Services.IServices;
@@ -10,11 +11,13 @@ namespace API_Powered_Hospital_Delivery_Robot.Services.ImplServices
     {
         private readonly IUserRepository _repository;
         private readonly IMapper _mapper;
+        private readonly EmailSender _emailSender; 
 
-        public UserService(IUserRepository repository, IMapper mapper)
+        public UserService(IUserRepository repository, IMapper mapper, EmailSender emailSender)
         {
             _repository = repository;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
 
         public async Task<UserResponseDto> CreateAsync(UserDto userDto)
@@ -59,6 +62,16 @@ namespace API_Powered_Hospital_Delivery_Robot.Services.ImplServices
             existing.IsActive = isActive;
             existing.UpdatedAt = DateTime.Now;
             await _repository.UpdateAsync(id, existing);
+
+            var toEmail = $"{existing.Username}@gmail.com";
+            if (isActive)
+            {
+                await _emailSender.SendAccountActivateEmail(toEmail, existing.FullName ?? existing.Username, existing.Username);
+            }
+            else
+            {
+                await _emailSender.SendAccountDeactivateEmail(toEmail, existing.FullName ?? existing.Username, existing.Username);
+            }
 
             return true;
         }
